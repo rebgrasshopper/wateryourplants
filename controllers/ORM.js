@@ -10,7 +10,7 @@ module.exports = {
                         console.log('user already exists!');
                         resolve(false);
                     } else {
-                        db.Garden.create({ garden: [], userAuthId }).then(gardenData => {
+                        db.Garden.create({ garden: [], gardenName: "New Garden", userAuthId }).then(gardenData => {
                             console.log(`${userName}'s First Garden:`)
                             console.log(gardenData);
     
@@ -36,10 +36,15 @@ module.exports = {
                         console.log('no matching user!')
                         resolve(false)
                     } else {
-                        db.Garden.create({ garden: [], userAuthId }).then(gardenData => {
+                        db.Garden.create({ garden: [], gardenName: "New Garden", userAuthId }).then(gardenData => {
                             console.log(`Added new garden for ${currentUserData[0].userName}!`);
     
-                            db.GardenList.findOneAndUpdate({ userAuthId }, { $push: { gardens: { garden: ObjectId(gardenData["_id"]) } } }, { new: true }).then(updatedUserData => {
+                            db.GardenList.findOneAndUpdate({ userAuthId }, { $push: { gardens: { garden: ObjectId(gardenData["_id"]) } } }, { new: true }).populate({
+                                path: "gardens.garden",
+                                populate: {
+                                    path: "garden.plant"
+                                }
+                            }).then(updatedUserData => {
                                 resolve(updatedUserData);
                             })
                         })
@@ -102,8 +107,19 @@ module.exports = {
                 console.log("Error from findUser(ORM.js):", e);
             }
         });
-    }
+    },
 
+    findGarden: ({gardenId}) => {
+        return new Promise(function(resolve, reject){
+            try {
+                db.Garden.findById(gardenId).populate(garden.plant).then((gardenData) => {
+                    resolve(gardenData)
+                });
+            } catch (e) {
+                console.log("Error from findGarden(ORM.js):", e);
+            }
+        });
+    }
 }
 
 

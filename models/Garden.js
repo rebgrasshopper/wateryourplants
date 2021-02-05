@@ -5,6 +5,9 @@ let gardenSchema = new Schema({
   garden: [{
           plant: { type: Schema.Types.ObjectId, ref: "Plant" }
       }],
+  gardenName: {
+    type: String
+  },
   userAuthId: {
       type: String
   }

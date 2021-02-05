@@ -1,1 +1,33 @@
-.GardenList {}
+.GardenList {
+    list-style-type: none;
+    text-align: left;
+    background-color: wheat;
+    border-radius: 10px !important;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-right: 30px;
+}
+
+.GardenList li {
+    padding: 8px 6px 12px 6px;
+    border-radius: 10px !important;
+    background-color: rgb(146, 173, 105);
+    margin: 3px;
+}
+
+.GardenList button {
+    border: none;
+    background-color: transparent;
+}
+
+.GardenList a {
+    color: black;
+    display: block;
+}
+
+.GardenList p {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin: 0px 20px 0px 4px;
+}

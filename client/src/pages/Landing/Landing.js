@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import styles from './Landing.module.css';
 import Dashboard from '../../components/Dashboard/Dashboard';
 
-const Landing = () => (
+function Landing ({userData, setUserData}) {
+  return (
   <div className={styles.Landing} data-testid="Landing">
-    <Dashboard />
+    <Dashboard userData={userData} setUserData={setUserData}/>
   </div>
-);
+  )
+};
 
 Landing.propTypes = {};
 

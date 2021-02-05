@@ -4,9 +4,12 @@ const PORT = process.env.PORT || 3001;
 const mongoose = require('mongoose');
 require('./controllers/ORM');
 const gardenRoutes = require("./routes");
+const cors = require('cors')
+
 
 //create app
 const app = express();
+app.use(cors())
 const server = require('http').createServer(app);
 
 //set app options

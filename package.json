@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "an app to track weather and remind you to water your garden",
   "main": "server.js",
-  "proxy": "http://localhost:3000",
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:3001"
+    }
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "set NODE_ENV=development&&concurrently \"npm:server\" \"npm:client\"",

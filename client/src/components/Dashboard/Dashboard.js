@@ -2,24 +2,21 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Dashboard.module.css';
 import calls from "../../utils/API";
+import GardenList from "../GardenList/GardenList";
 
 
-function Dashboard () {
-  const [ userData, setUserData ] = useState();
-  console.log("userData:", userData)
+function Dashboard ({ userData, setUserData }) {
 
   useEffect(()=>{
-    calls.getUserData({userAuthId:"kasdkf8923u23"}).then(data=>{
-      setUserData(data);
-    })
-  }, [])
+    console.log(userData);
+  }, [userData])
 
   return (
   <div className={styles.Dashboard} data-testid="Dashboard">
     <header><h1>Garden Dashboard</h1></header>
-    <ul>
-    {userData && userData.gardens.map(garden => <li>garden</li>)}
-    </ul>
+    <div>
+      {userData && <GardenList gardens={userData.gardens} user={{userName:userData.userName, userId:userData.userAuthId}} setUserData={setUserData}/>}
+    </div>
   </div>
   )
 
