@@ -1,0 +1,36 @@
+{
+  "name": "wateryourplants",
+  "version": "1.0.0",
+  "description": "an app to track weather and remind you to water your garden",
+  "main": "server.js",
+  "proxy": "http://localhost:3000",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "set NODE_ENV=development&&concurrently \"npm:server\" \"npm:client\"",
+    "client": "cd client && npm run start",
+    "server": "nodemon --ignore 'client/*'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rebgrasshopper/wateryourplants.git"
+  },
+  "author": "Plover Brown",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rebgrasshopper/wateryourplants/issues"
+  },
+  "homepage": "https://github.com/rebgrasshopper/wateryourplants#readme",
+  "dependencies": {
+    "concurrently": "^5.3.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.4"
+  },
+  "devDependencies": {
+    "chai": "^4.3.0",
+    "mocha": "^8.2.1",
+    "mongoose": "^5.11.15",
+    "nodemon": "^2.0.7"
+  }
+}
