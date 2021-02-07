@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 require('./controllers/ORM');
 const gardenRoutes = require("./routes");
 const cors = require('cors')
+require('dotenv').config();
 
 
 //create app

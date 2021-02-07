@@ -1,0 +1,67 @@
+.GardenNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 6px 10px 6px 10px;
+    position: relative;
+}
+
+.GardenNav ul {
+    display: flex;
+    list-style-type: none;
+    background-color: whitesmoke;
+    border-radius: 10px 10px 10px 10px;
+    padding: 0px;
+}
+
+.GardenNav ul li {
+    padding: 20px;
+}
+
+.GardenNav ul li:hover {
+    cursor: pointer;
+}
+
+.GardenNav .SquareBottom {
+    border-radius: 10px 10px 0px 0px;
+}
+
+.plus {
+    margin-right: 5px;
+}
+
+.addMenu {
+    background-color: whitesmoke;
+    padding: 20px;
+    border-radius: 10px 0px 10px 10px;
+    position: absolute;
+    right: 0px;
+    width: 75vw;
+    top: 77px;
+    display: none;
+}
+
+.addMenu input[name="plantSearch"] {
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 50vw;
+}
+
+.addMenu fieldset {
+    margin: 20px 10px 20px 10px;
+    display: flex;
+    align-items: center;
+}
+
+.addMenu fieldset input {
+    margin: 10px;
+}
+
+.addMenu fieldset input:hover {
+    cursor: pointer;
+}
+
+.ButtonDiv {
+    display: flex;
+    justify-content: space-around;
+}

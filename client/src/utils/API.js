@@ -23,6 +23,26 @@ const calls = {
                 resolve(data.data);
             })
         });
+    },
+
+    findPlant: ({searchValue, searchParam}) => {
+        console.log('looking for stawberries');
+        return new Promise(function(resolve, reject){
+            const searchString = `q=${searchValue.replace(/\s/g, "%20")}&token=`;
+            axios.get("http://localhost:3001/api/plant-search/"+searchString).then(data => {
+                resolve(data.data.data);
+            })
+        })
+    },
+
+    getPlantData: ({plantLink, scientificName}) => {
+        return new Promise(function(resolve, reject){
+            let searchString = plantLink.replace(/\//g, '--');
+            console.log(searchString)
+            axios.get("http://localhost:3001/api/plant-specifics/"+searchString).then(data => {
+                resolve(data)
+            })
+        });
     }
 }
 

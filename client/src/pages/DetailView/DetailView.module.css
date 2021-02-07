@@ -1,10 +1,18 @@
 .DetailView {
     background: rgb(190, 148, 93);
-    margin: 20px;
-    border-radius: 10px;
     padding: 6px;
+    height: 100vh;
 }
 
 .DetailView h1 {
     margin-left: 20px;
+    text-align: center;
+}
+
+@media screen and (min-width: 850px){
+    .DetailView {
+    margin: 20px;
+    border-radius: 10px;
+    height: max-content;
+    }
 }

@@ -1,0 +1,72 @@
+.SearchResults {
+    display: flex;
+    flex-direction: column !important;
+}
+
+.SearchResults button {
+    border: none;
+}
+
+.SearchResults img {
+    height: 100px;
+}
+
+.SearchedPlant {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: solid wheat 2px;
+}
+
+.SearchedPlant:last-of-type {
+    border-bottom: solid wheat 2px;
+}
+
+
+.SearchedPlant h2 {
+    margin-bottom: 0px;
+}
+
+.SearchedPlant img, .SearchedPlant div, .SearchedPlant h3 {
+    pointer-events: none;
+}
+
+.CurrentPlant {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: whitesmoke;
+    padding: 20px;
+    width: 100vw;
+    height: 100vh;
+}
+
+.CareDetails {
+    position: relative;
+}
+
+.CurrentPlant h1 {
+    font-size: xx-large;
+    margin-bottom: 4px;
+    margin-left: 0px;
+}
+
+.FamilyName {
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 50px;
+}
+
+.CurrentPlant img {
+    margin-right: 40px;
+    height: auto;
+    width: 35vw;
+}
+
+.CurrentPlant button {
+    border: solid 2px rgb(127, 146, 97);
+    padding: 8px;
+    margin: 20px;
+    border-radius: 10px;
+
+}
