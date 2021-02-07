@@ -1,18 +1,26 @@
 .GardenList {
-    list-style-type: none;
     text-align: left;
-    background-color: wheat;
+    background-color: var(--color2);
     border-radius: 10px !important;
-    padding-top: 16px;
-    padding-bottom: 16px;
-    padding-right: 30px;
+    border: solid 2px var(--color1);
+    max-width: 350px;
+    margin: 20px;
+}
+
+.GardenList ul {
+    background-color: var(--color3);
+    padding: 20px 30px 16px 20px;
+    margin: 0px;
+    border-radius: 0px 0px 10px 10px;
+    list-style-type: none;
 }
 
 .GardenList li {
-    padding: 8px 6px 12px 6px;
+    padding: 8px 6px 12px 16px;
     border-radius: 10px !important;
-    background-color: rgb(146, 173, 105);
+    background-color: var(--color4);
     margin: 3px;
+    border: 1px solid var(--color1) !important;
 }
 
 .GardenList button {
@@ -25,9 +33,18 @@
     display: block;
 }
 
-.GardenList p {
+.GardenList header {
     display: flex;
     justify-content: space-between;
     font-weight: bold;
-    margin: 0px 20px 0px 4px;
+    padding-bottom: 30px;
+    border-bottom: 2px solid var(--color1);
+    padding: 20px 30px 30px 30px;
+    margin: 0px;
+    font-size: 1.3em;
+
+}
+
+.GardenList hr {
+    margin-bottom: 8px;
 }

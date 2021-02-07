@@ -26,10 +26,12 @@ function PlantCard({ plant }) {
         <h3>{plant.plant.plantName}</h3>
         <img src={shrub} alt="icon of a draught tolerant shrub" className="plantIcon"></img>
       </div>
-      <p>A {plant.plant.category}.</p>
-      <p>Water me: {plant.plant.waterNeed}</p>
-      <p>I would like {joinArrayWithFinalOr(plant.plant.sunNeed)} sun.</p>
-      <p>I'd feel most comfortable in {joinArrayWithFinalOr(plant.plant.soilType)} soil.</p>
+      <div className={styles.Data}>
+        <p>A {plant.plant.category}.</p>
+        <p>Water me: {plant.plant.waterNeed}</p>
+        <p>I would like {joinArrayWithFinalOr(plant.plant.sunNeed)} sun.</p>
+        <p>I'd feel most comfortable in {joinArrayWithFinalOr(plant.plant.soilType)} soil.</p>
+      </div>
     </div>
   )
 };

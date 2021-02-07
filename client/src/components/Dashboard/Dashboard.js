@@ -12,12 +12,10 @@ function Dashboard ({ userData, setUserData }) {
   }, [userData])
 
   return (
-  <div className={styles.Dashboard} data-testid="Dashboard">
+  <section className={styles.Dashboard} data-testid="Dashboard">
     <header><h1>Garden Dashboard</h1></header>
-    <div>
       {userData && <GardenList gardens={userData.gardens} user={{userName:userData.userName, userId:userData.userAuthId}} setUserData={setUserData}/>}
-    </div>
-  </div>
+  </section>
   )
 
 }

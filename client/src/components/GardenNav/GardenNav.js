@@ -19,10 +19,6 @@ return (
       <form onReset={onAddMenuCancel} onSubmit={onSearchSubmit} onChange={onInputChange}>
         <label htmlFor="plantSearch">Search</label>
         <input name="plantSearch"></input>
-        <fieldset>
-          <input type="radio" name="searchParam" value="common_name" defaultChecked />Common Name
-            <input type="radio" name="searchParam" value="scientific_name" />Scientific Name
-          </fieldset>
         <div className={styles.ButtonDiv}>
           <button type="reset">Cancel</button>
           <button type="submit">Search</button>

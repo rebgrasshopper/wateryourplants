@@ -15,19 +15,20 @@ function GardenList({ gardens, user, setUserData }) {
     });
   }
   return (
-    <ul className={styles.GardenList} data-testid="GardenList">
-      <p>
+    <section className={styles.GardenList} data-testid="GardenList">
+      <header>
         {user ? `${user.userName}'s Gardens:` : 'No garden data...'}
         <button id="addNewSpan" onClick={onAdd}>
-          <FontAwesomeIcon icon={faPlusCircle} />
+          <FontAwesomeIcon icon={faPlusCircle} size={2+"x"} color={"#1C6E8C"}/>
         </button>
-      </p>
-      <hr />
+      </header>
+    <ul>
       {gardens && gardens.map(garden => {
         return <li key={garden.garden._id}><Link className="gardenDetailLink" to={`/garden/${garden.garden._id}`}><FontAwesomeIcon icon={faSeedling} style={{ marginRight: 15 + "px" }} />{garden.garden.gardenName}</Link></li>
       })
       }
     </ul>
+    </section>
   )
 }
 

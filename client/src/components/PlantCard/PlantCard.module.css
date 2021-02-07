@@ -1,6 +1,7 @@
 .PlantCard {
-    background-color: wheat;
-    padding: 10px 20px 10px 20px;
+    background-color: var(--color3);
+    padding: 0px;
+    border: 2px solid var(--color1);
     border-radius: 10px;
 }
 
@@ -8,8 +9,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: var(--color2);
+    padding: 10px 20px 0px 20px;
+    border-radius: 7px 7px 0px 0px;
+    border-bottom: 2px solid var(--color1);
 }
 
 .PlantCard img {
     width: 100px;
+}
+
+.Data {
+    padding: 20px;
 }

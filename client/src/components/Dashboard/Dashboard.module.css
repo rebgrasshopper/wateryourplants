@@ -1,7 +1,25 @@
 .Dashboard {
-    background: rgb(190, 148, 93);
+    background: var(--color3);
     text-align: center;
-    margin: 40px;
-    border-radius: 10px;
-    padding: 10px;
+    margin: 0px;
+    padding: 0px 10px 80px 10px;
+    border: solid 4px var(--color2);
+    height: 100vh;
+    color: var(--color1);
+}
+
+.Dashboard h1 {
+    color: var(--color1);
+    background-color: var(--color2);
+    margin: 0px -10px 0px -10px;
+    padding: 30px;
+    border-bottom: solid 2px var(--color1);
+}
+
+@media screen and (min-width: 601px) {
+    .Dashboard {
+        margin: 40px;
+        height: auto;
+        border-radius: 10px;
+    }
 }

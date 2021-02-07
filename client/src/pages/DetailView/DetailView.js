@@ -80,8 +80,7 @@ function DetailView ({userData, setUserData, match}) {
   return (
   <div className={styles.DetailView} data-testid="DetailView">
     <GardenNav garden={garden} addMenu={addMenu} onAddPlantPress={onAddPlantPress} onInputChange={onInputChange} onSearchSubmit={onSearchSubmit} onAddMenuCancel={onAddMenuCancel} searchResults={searchResults} searchError={searchError}/>
-    <hr />
-    <section id="gardenPlants">
+    <section className={styles.GardenPlants}>
       {garden && garden.garden.map(plant => {
         return <PlantCard plant={plant} key={plant._id}/>
       })}
