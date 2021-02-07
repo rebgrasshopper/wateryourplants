@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Dashboard.module.css';
-import calls from "../../utils/API";
 import GardenList from "../GardenList/GardenList";
 
 

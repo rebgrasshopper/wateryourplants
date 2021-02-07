@@ -5,10 +5,9 @@ import Plant from "./images/plant.png";
 import gardenCalls from "../../utils/API";
 const sunRequirements = {0:"dense shade", 1:"dense shade", 2:"full shade", 3:"full shade", 4:"partial shade", 5:"partial shade", 6:"partial sun", 7:"partial sun", 8:"full sun", 9:"full sun", 10:"full sun"};
 
-function SearchResults({ searchResults }) {
+function SearchResults({ searchResults, addMenu, currentPlant, setCurrentPlant, currentPlantDetails, setCurrentPlantDetails }) {
 
-  const [currentPlant, setCurrentPlant] = useState();
-  const [currentPlantDetails, setCurrentPlantDetails] = useState();
+
 
   function buttonClick(event) {
     setCurrentPlant(searchResults.filter(plant => plant.scientific_name === event.target.id)[0])

@@ -1,6 +1,7 @@
 .SearchResults {
     display: flex;
     flex-direction: column !important;
+
 }
 
 .SearchResults button {
@@ -15,30 +16,38 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: solid wheat 2px;
+    border-top: solid var(--color1) 2px;
+
 }
 
-.SearchedPlant:last-of-type {
-    border-bottom: solid wheat 2px;
+.SearchedPlant:first-of-type {
+    border-top: none;
 }
 
 
 .SearchedPlant h2 {
     margin-bottom: 0px;
+    font-size: medium;
+}
+
+.SearchedPlant p {
+    font-size: smaller;
 }
 
 .SearchedPlant img, .SearchedPlant div, .SearchedPlant h3 {
     pointer-events: none;
 }
 
+
 .CurrentPlant {
     position: fixed;
     top: 0px;
     left: 0px;
-    background-color: whitesmoke;
+    background-color: var(--color3);
     padding: 20px;
     width: 100vw;
     height: 100vh;
+    overflow-x: hidden;
 }
 
 .CareDetails {
@@ -64,9 +73,16 @@
 }
 
 .CurrentPlant button {
-    border: solid 2px rgb(127, 146, 97);
+    border: solid 2px var(--color1);
+    background-color: var(--color2);
     padding: 8px;
     margin: 20px;
     border-radius: 10px;
 
+}
+
+.CurrentPlant hr {
+    border-color: var(--color1);
+    width: 110vw;
+    margin-left: -30px;
 }
