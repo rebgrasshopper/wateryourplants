@@ -17,6 +17,13 @@
       "withStory": false,
       "withStyle": true,
       "withTest": true
+    },
+    "context": {
+      "path": "src/providers",
+      "withLazy": false,
+      "withStory": false,
+      "withStyle": true,
+      "withTest": false
     }
   }
 }

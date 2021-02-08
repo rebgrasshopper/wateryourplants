@@ -1,19 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import { useContext } from 'react';
 import styles from './Dashboard.module.css';
 import GardenList from "../GardenList/GardenList";
+import weatherProvider from '../../providers/weatherProvider';
+import userProvider from "../../providers/userProvider";
 
 
-function Dashboard ({ userData, setUserData }) {
+
+function Dashboard () {
+
+
+  const weather = useContext(weatherProvider);
+  const user = useContext(userProvider);
 
   useEffect(()=>{
-    console.log(userData);
-  }, [userData])
+    console.log(user.DBUser);
+  }, [user.DBUser])
 
   return (
   <section className={styles.Dashboard} data-testid="Dashboard">
     <header><h1>Garden Dashboard</h1></header>
-      {userData && <GardenList gardens={userData.gardens} user={{userName:userData.userName, userId:userData.userAuthId}} setUserData={setUserData}/>}
+      {user.DBUser && <GardenList gardens={user.DBUser.gardens} user={{userName:user.DBUser.userName, userId:user.DBUser.userAuthId}}/>}
   </section>
   )
 

@@ -5,6 +5,7 @@ import GardenDetail from '../../components/GardenDetail/GardenDetail';
 import PlantCard from "../../components/PlantCard/PlantCard";
 import GardenNav from "../../components/GardenNav/GardenNav";
 import gardenCalls from "../../utils/API";
+import calls from '../../utils/API';
 
 function DetailView ({userData, setUserData, match}) {
 
@@ -43,6 +44,8 @@ function DetailView ({userData, setUserData, match}) {
 
   function onSearchSubmit(event){
     event.preventDefault();
+    setSearchError();
+    setSearchResults([]);
     console.log("submitting", search)
     setSearch({
       ...search,
@@ -62,10 +65,6 @@ function DetailView ({userData, setUserData, match}) {
     } else {
       setSearchError(true);
     }
-    // setSearch(initialSearchValue);
-    // setAddMenu(false);
-    // event.target.reset();
-    // setSearchError(false);
   }
 
   function resetForm(){
@@ -74,6 +73,8 @@ function DetailView ({userData, setUserData, match}) {
     setAddMenu(false);
     setSearchError(false);
     setSearchResults([]);
+    setCurrentPlant();
+    setCurrentPlantDetails();
   }
   
   function onAddPlantPress(){
@@ -87,7 +88,14 @@ function DetailView ({userData, setUserData, match}) {
   }
 
   function addPlantToGarden(){
-
+    calls.addPlantToDB({newPlantData: currentPlantDetails}).then(data=>{
+      console.log('added plant to db, received this info:', data);
+      calls.addPlantToGarden({scientificName: currentPlant["scientific_name"], gardenId: garden._id}).then(returnData=> {
+        console.log("Got data back from addPlant!");
+        console.log(returnData);
+        resetForm();
+      })
+    });
   }
 
   function onAddMenuCancel(event) {
@@ -111,6 +119,7 @@ function DetailView ({userData, setUserData, match}) {
     currentPlantDetails={currentPlantDetails}
     setCurrentPlantDetails={setCurrentPlantDetails}
     search={search}
+    addPlantToGarden={addPlantToGarden}
     />
     <section className={styles.GardenPlants}>
       {garden && garden.garden.map(plant => {

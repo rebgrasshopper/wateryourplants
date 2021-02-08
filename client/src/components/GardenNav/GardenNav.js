@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import SearchResults from "../SearchResults/SearchResults";
 
-function GardenNav({ garden, onInputChange, onSearchSubmit, addMenu, onAddPlantPress, onAddMenuCancel, searchResults, searchError, currentPlant, setCurrentPlant, currentPlantDetails, setCurrentPlantDetails, search }) {
+function GardenNav({ garden, onInputChange, onSearchSubmit, addMenu, onAddPlantPress, onAddMenuCancel, searchResults, searchError, currentPlant, setCurrentPlant, currentPlantDetails, setCurrentPlantDetails, search, addPlantToGarden }) {
   return (
     <nav className={styles.GardenNav} data-testid="GardenNav">
 
@@ -26,10 +26,10 @@ function GardenNav({ garden, onInputChange, onSearchSubmit, addMenu, onAddPlantP
             <button type="submit">Search</button>
           </div>
         </form>
-        {search.searching || searchResults ?
-        <article className={styles.SearchResultsDiv}>
+        {search.searching || searchResults.length > 0 ?
+        <article className={styles.SearchResultsDiv} style={search.searching & searchResults.length === 0 ? {alignItems:"center"} : {alignItems:"stretch"}}>
           {/* loading dots */}
-          {!searchResults ? 
+          {searchResults.length === 0 ? 
           <div className={styles.loadingioSpinnerEllipsis}><div className={styles.ldio}>
             <div></div><div></div><div></div><div></div><div></div>
           </div></div>
@@ -42,6 +42,7 @@ function GardenNav({ garden, onInputChange, onSearchSubmit, addMenu, onAddPlantP
             setCurrentPlant={setCurrentPlant}
             currentPlantDetails={currentPlantDetails}
             setCurrentPlantDetails={setCurrentPlantDetails}
+            addPlantToGarden={addPlantToGarden}
           />}
           {searchError && <div className={styles.SearchError}>Please enter search text!</div>}
         </article>

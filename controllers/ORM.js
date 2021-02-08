@@ -57,14 +57,20 @@ module.exports = {
         })
     },
     
-    addPlantToGarden: ({ gardenId, plantId }) => {
+    addPlantToGarden: ({ gardenId, plantName }) => {
         return new Promise(function (resolve, reject) {
             try {
-                console.log(`adding plant: ${plantId} to garden: ${gardenId}.`)
-                db.Garden.findByIdAndUpdate(gardenId, { $push: { garden: {plant: ObjectId(plantId)} } }, { new: true }).populate('garden.plant').then(updatedGardenData => {
-                    console.log("updatedGardenData");
-                    console.log(updatedGardenData);
-                    resolve(updatedGardenData);
+                db.Plant.findOne({scientificName:plantName}).then(plantData=>{
+                    if (plantData) {
+                        console.log(`adding plant: ${plantName} to garden: ${gardenId}.`)
+                        db.Garden.findByIdAndUpdate(gardenId, { $push: { garden: {plant: ObjectId(plantData._id)} } }, { new: true }).populate('garden.plant').then(updatedGardenData => {
+                            console.log("updatedGardenData");
+                            console.log(updatedGardenData);
+                            resolve(updatedGardenData);
+                        })
+                    } else {
+                        reject("no such plant found");
+                    }
                 })
             } catch (e) {
                 console.log("Error from addPlant(ORM.js):", e);
@@ -75,9 +81,10 @@ module.exports = {
     createPlant: (plantObject) => {
         return new Promise(function (resolve, reject){
             try {
-                db.Plant.find({plantName: plantObject.plantName}).then(currentDuplicates => {
+                db.Plant.find({scientificName: plantObject.scientificName}).then(currentDuplicates => {
                     if (currentDuplicates.length > 0) {
                         console.log("This plant already exists!")
+                        console.log(currentDuplicates)
                         resolve(false);
                     } else {
                         db.Plant.create(plantObject).then(returnData => {

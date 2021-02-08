@@ -3,9 +3,12 @@ import PropTypes from 'prop-types';
 import styles from './SearchResults.module.css';
 import Plant from "./images/plant.png";
 import gardenCalls from "../../utils/API";
+
 const sunRequirements = {0:"dense shade", 1:"dense shade", 2:"full shade", 3:"full shade", 4:"partial shade", 5:"partial shade", 6:"partial sun", 7:"partial sun", 8:"full sun", 9:"full sun", 10:"full sun"};
 
-function SearchResults({ searchResults, addMenu, currentPlant, setCurrentPlant, currentPlantDetails, setCurrentPlantDetails }) {
+const soilTypes = {1:"clay", 2:"intermediate soil", 3:"silty soil", 4:"fine sand", 5:"course sand", 6:"gravel", 7:"pebbles and rockeries", 8:"blocks, slabs, and rocky flats", 9:"Vertical cracks in the walls", 10:"rock"}
+
+function SearchResults({ searchResults, addMenu, currentPlant, setCurrentPlant, currentPlantDetails, setCurrentPlantDetails, addPlantToGarden }) {
 
 
 
@@ -46,10 +49,11 @@ function SearchResults({ searchResults, addMenu, currentPlant, setCurrentPlant, 
             {currentPlantDetails.main_species.growth.minimum_temperature.deg_f && <p>I don't want to be any colder than {currentPlantDetails.main_species.growth.minimum_temperature.deg_f}°F.</p>}
             {currentPlantDetails.main_species.growth.maximum_temperature.deg_f && <p>I'd rather not be any warmer than {currentPlantDetails.main_species.growth.maximum_temperature.deg_f}°F.</p>}
             {currentPlantDetails.main_species.growth.light && <p>I'd like to live in {sunRequirements[currentPlantDetails.main_species.growth.light]}.</p>}
-            {!currentPlantDetails.main_species.growth.minimum_precipitation.mm & !currentPlantDetails.main_species.growth.maximum_precipitation.mm & !currentPlantDetails.main_species.growth.minimum_temperature.deg_f & !currentPlantDetails.main_species.growth.maximum_temperature.deg_f & !currentPlantDetails.main_species.growth.light ? <p>We're sorry, there is no plant data at this time! Contact us to let us know, and we'll try to find out about this plant's care!</p> : <p></p>}
+            {currentPlantDetails.main_species.growth.soil_texture ? <p>I prefer to live in {soilTypes[currentPlantDetails.main_species.growth.soil_texture]}.</p> : undefined}
+            {!currentPlantDetails.main_species.growth.minimum_precipitation.mm & !currentPlantDetails.main_species.growth.maximum_precipitation.mm & !currentPlantDetails.main_species.growth.minimum_temperature.deg_f & !currentPlantDetails.main_species.growth.maximum_temperature.deg_f & !currentPlantDetails.main_species.growth.light & !currentPlantDetails.main_species.growth.soil_texture ? <p>We're sorry, there is no plant data at this time! Contact us to let us know, and we'll try to find out about this plant's care!</p> : <p></p>}
           </div>
           <button onClick={backButtonClick}>Back</button>
-          <button>Add Plant</button>
+          <button onClick={addPlantToGarden}>Add Plant</button>
         </section>
       )
     }

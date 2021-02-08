@@ -1,28 +1,66 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Landing from './pages/Landing/Landing';
 import DetailView from './pages/DetailView/DetailView';
 import { BrowserRouter, Route } from "react-router-dom";
 import gardenCalls from "./utils/API";
+import weatherProvider from "./providers/weatherProvider";
+import userProvider from "./providers/userProvider";
+
+
+let i = 0;
 
 function App() {
+  console.log(weatherProvider)
 
-  const [ userData, setUserData ] = useState();
+  const [weatherData, setWeatherData] = useState({
+      currentWeather: {},
+      historicalWeather: {},
+      setWeather: () => { }
+    }
+  );
 
-  useEffect(()=>{
-    gardenCalls.getUserData({userAuthId:"kasdkf8923u23"}).then(data=>{
-      setUserData(data);
+  const [userData, setUserData] = useState({
+    DBUser: {},
+    authUserId: {},
+    setUser: () => { }
+  }
+);
+
+  useEffect(() => {
+    gardenCalls.getUserData({ userAuthId: "kasdkf8923u23" }).then(data => {
+      console.log(i, "setting user data");
+      console.log("current", userData)
+      console.log(weatherData);
+      setUserData({
+        ...userData,
+          DBUser: data
+      });
+
+      gardenCalls.getCurrentWeather({ cityName: "San Diego" }).then(data => {
+      console.log(i, "setting weather data")
+      console.log("current", userData)
+      console.log(weatherData);
+        setWeatherData({
+          ...weatherData,
+            currentWeather: data
+        })
+      })
     })
+    i++;
   }, [])
 
 
-  if (userData){
-    console.log("data:", userData)
+  if (userData) {
+    console.log("data:", userData, weatherData)
     return (
       <BrowserRouter>
-        <Route exact path="/" render={(props)=> <Landing userData={userData} setUserData={setUserData} />}/>
-        <Route path="/garden/:id" render={(props) => <DetailView userData={userData} setUserData={setUserData} {...props}/>} />
+        <userProvider.Provider value={userData}>
+          <weatherProvider.Provider value = {weatherData}>
+          <Route exact path="/" render={(props) => <Landing />} />
+          <Route path="/garden/:id" render={(props) => <DetailView />} />
+          </weatherProvider.Provider>
+        </userProvider.Provider>
       </BrowserRouter>
     );
   } else {

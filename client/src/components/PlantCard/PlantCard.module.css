@@ -3,6 +3,7 @@
     padding: 0px;
     border: 2px solid var(--color1);
     border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .PlantTitle {
@@ -10,13 +11,15 @@
     justify-content: space-between;
     align-items: center;
     background: var(--color2);
-    padding: 10px 20px 0px 20px;
+    padding: 10px 10px 10px 20px;
     border-radius: 7px 7px 0px 0px;
     border-bottom: 2px solid var(--color1);
+    text-transform: capitalize;
 }
 
 .PlantCard img {
     width: 100px;
+    border-radius: 10px;
 }
 
 .Data {

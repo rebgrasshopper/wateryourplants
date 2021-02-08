@@ -4,6 +4,8 @@ const cors = require('cors');
 const axios = require('axios');
 require('dotenv').config();
 
+// gardenCalls.addUserToGardenList({ userAuthId: "kasdkf8923u23", userName: "Plover" });
+
 router.route('/user/:id')
     .get(cors(), function (req, res) {
         gardenCalls.findUser({ userAuthId: req.params.id }).then(function (data) {
@@ -54,8 +56,35 @@ router.route('/plant-specifics/:plantLink')
         })
     })
 
+router.route('/plant-db')
+    .put(cors(), function(req, res) {
+        console.log('inside put plant in db');
+        console.log(req.body);
+        gardenCalls.createPlant(req.body).then(data => {
+            res.json(data);
+        }).catch(e => {
+            console.log("Error from plant-db create plant route(routes/index.js):", e);
+        })
+    })
 
-// axios.get('https://trefle.io/api/v1/plants?token=FYFw2C9q8sbJ4a9EtblKiHRaA18cUhIBWnJLHovILtk').then(data => {
-//     console.log(data);
-// })
+
+    router.route('/garden/add')
+    .post(cors(), function(req, res) {
+        console.log('inside put plant in garden');
+        gardenCalls.addPlantToGarden({plantName: req.body.scientificName, gardenId:req.body.gardenId}).then(data => {
+            res.json(data);
+        }).catch(e => {
+            console.log("Error from garden/add  route(routes/index.js):", e);
+        })
+    })
+
+router.route('/weather/:cityName')
+    .get(cors(), function(req, res){
+        const searchURL = `https://api.openweathermap.org/data/2.5/weather?q=${req.params.cityName}&appid=${process.env.openWeatherToken}`
+        axios.get(searchURL).then(data=>{
+            res.json(data.data);
+        }).catch(e=>{
+            console.log("Error from currentWeather route(routes/index.js):", e);
+        })
+    })
 module.exports = router;
