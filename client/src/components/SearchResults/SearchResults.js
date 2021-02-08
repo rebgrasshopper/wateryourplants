@@ -8,7 +8,7 @@ const sunRequirements = {0:"dense shade", 1:"dense shade", 2:"full shade", 3:"fu
 
 const soilTypes = {1:"clay", 2:"intermediate soil", 3:"silty soil", 4:"fine sand", 5:"course sand", 6:"gravel", 7:"pebbles and rockeries", 8:"blocks, slabs, and rocky flats", 9:"Vertical cracks in the walls", 10:"rock"}
 
-function SearchResults({ searchResults, addMenu, currentPlant, setCurrentPlant, currentPlantDetails, setCurrentPlantDetails, addPlantToGarden }) {
+function SearchResults({ searchResults, currentPlant, setCurrentPlant, currentPlantDetails, setCurrentPlantDetails, addPlantToGarden }) {
 
 
 

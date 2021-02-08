@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styles from './GardenNav.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
@@ -37,7 +36,6 @@ function GardenNav({ garden, onInputChange, onSearchSubmit, addMenu, onAddPlantP
           {/* search results */}
           {searchResults && <SearchResults
             searchResults={searchResults}
-            addMenu={addMenu}
             currentPlant={currentPlant}
             setCurrentPlant={setCurrentPlant}
             currentPlantDetails={currentPlantDetails}

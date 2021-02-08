@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import styles from './DetailView.module.css';
 import GardenDetail from '../../components/GardenDetail/GardenDetail';
@@ -6,9 +6,13 @@ import PlantCard from "../../components/PlantCard/PlantCard";
 import GardenNav from "../../components/GardenNav/GardenNav";
 import gardenCalls from "../../utils/API";
 import calls from '../../utils/API';
+import userProvider from "../../providers/userProvider";
 
-function DetailView ({userData, setUserData, match}) {
 
+function DetailView () {
+  let gardenIdFromURL = window.location.pathname.slice(8);
+  let userData = useContext(userProvider);
+  userData = userData.DBUser;
   const initialSearchValue = {
     plantSearch: '',
     searchParam: 'common_name',
@@ -24,13 +28,19 @@ function DetailView ({userData, setUserData, match}) {
 
   useEffect(()=>{
     try {
-      for (const garden of userData.gardens){
-        if (match){
-          if (match.params.id === garden.garden._id){
-            setGarden(garden.garden)
+      let match = false;
+      if (userData.gardens){
+        for (const garden of userData.gardens){
+          console.log('checking for:', gardenIdFromURL);
+          if (gardenIdFromURL){
+            if (gardenIdFromURL === garden.garden._id){
+              match = true;
+              setGarden(garden.garden)
+            }
           }
         }
       }
+      //do something else if no match
     } catch (e) {
       console.log("Error from useEffect(DetailView.js):", e)
     }
