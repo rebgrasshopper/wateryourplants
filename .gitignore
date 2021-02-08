@@ -4,3 +4,5 @@ package-lock.json
 /build
 /.vscode
 npm-debug.log*
+client/src/components/PlantCard/images/fire gauge.xcf
+*.xcf

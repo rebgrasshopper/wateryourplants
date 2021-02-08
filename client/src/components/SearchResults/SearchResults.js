@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import styles from './SearchResults.module.css';
 import Plant from "./images/plant.png";
 import gardenCalls from "../../utils/API";

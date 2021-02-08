@@ -1,12 +1,11 @@
 import React, { useEffect, useState, useContext } from 'react';
-import PropTypes from 'prop-types';
 import styles from './DetailView.module.css';
-import GardenDetail from '../../components/GardenDetail/GardenDetail';
 import PlantCard from "../../components/PlantCard/PlantCard";
 import GardenNav from "../../components/GardenNav/GardenNav";
 import gardenCalls from "../../utils/API";
 import calls from '../../utils/API';
 import userProvider from "../../providers/userProvider";
+import weatherProvider from "../../providers/weatherProvider";
 
 
 function DetailView () {
@@ -26,12 +25,23 @@ function DetailView () {
   const [currentPlant, setCurrentPlant] = useState();
   const [currentPlantDetails, setCurrentPlantDetails] = useState();
 
+
+
+  const weather = useContext(weatherProvider);
+
+  useEffect(() =>{
+    weather && console.log(weather)
+    
+    // console.log(userData)
+  }, [weather])
+
+
   useEffect(()=>{
     try {
       let match = false;
       if (userData.gardens){
         for (const garden of userData.gardens){
-          console.log('checking for:', gardenIdFromURL);
+          // console.log('checking for:', gardenIdFromURL);
           if (gardenIdFromURL){
             if (gardenIdFromURL === garden.garden._id){
               match = true;

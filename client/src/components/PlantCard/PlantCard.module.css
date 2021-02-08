@@ -22,6 +22,39 @@
     border-radius: 10px;
 }
 
+.BottomOfCard {
+    display: flex;
+    padding-bottom: 20px;
+}
+
+.GaugeDiv {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.FullGauge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Gauge {
+    margin: 10px;
+}
+
+.Pointer {
+    width: 30px !important;
+    margin-top: -40%;
+    
+}
+
+.FullGauge p {
+    margin-top: -3px;
+}
+
 .Data {
     padding: 20px;
 }
