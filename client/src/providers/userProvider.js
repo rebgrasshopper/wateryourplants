@@ -2,7 +2,6 @@ import React from 'react';
 
 const MyContext = React.createContext({
     DBUser: {},
-    authUserId: {},
     setUser: () => {}
 });
 

@@ -16,14 +16,17 @@ function App() {
   const [weatherData, setWeatherData] = useState({
       currentWeather: {},
       historicalWeather: {},
-      setWeather: () => { }
+      setWeather: () => {
+      }
     }
   );
 
   const [userData, setUserData] = useState({
     DBUser: {},
     authUserId: {},
-    setUser: () => { }
+    setUser: (data) => {
+      setUserData({...userData, DBUser:data});
+    }
   }
 );
 

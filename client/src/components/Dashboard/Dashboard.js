@@ -14,13 +14,15 @@ function Dashboard () {
   const user = useContext(userProvider);
 
   useEffect(()=>{
-    console.log(user.DBUser);
+    console.log("Broadcasting Current User:", user.DBUser);
   }, [user.DBUser])
 
   return (
   <section className={styles.Dashboard} data-testid="Dashboard">
     <header><h1>Garden Dashboard</h1></header>
-      {user.DBUser && <GardenList gardens={user.DBUser.gardens} user={{userName:user.DBUser.userName, userId:user.DBUser.userAuthId}}/>}
+      {user.DBUser && <GardenList
+      //  gardens={user.DBUser.gardens} user={{userName:user.DBUser.userName, userId:user.DBUser.userAuthId}}
+       />}
   </section>
   )
 
